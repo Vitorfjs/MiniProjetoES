@@ -4,6 +4,7 @@ public class ListaSeq {
 		
 		final int MAX = 60;
 		Alunos[] alunos = new Alunos[MAX];
+		ListaEncad listaEncad = new ListaEncad();
 		int n = 0;
 		
 		public boolean estaVazia() {
@@ -103,9 +104,12 @@ public class ListaSeq {
 		}
 		
 		public void showList() {
+			
 			for (int i = 0; i < n; i++) {
 				System.out.println(" " + (i+1) + " - " +"" + alunos[i].RGM + " | " 
-				+ "(" + alunos[i].nome + ") " /*+ contatos[i].numero*/);
+				+ "" + alunos[i].nome );
+				alunos[i].mostrarDisciplinas();
+				System.out.println();
 				
 			}
 			System.out.println("\nTotal: " + n);
@@ -118,7 +122,7 @@ public class ListaSeq {
 	            int j = i - 1;
 
 	            // Move os elementos maiores que a chave uma posição à frente
-	            while (j >= 0 && alunos[j].RGM.compareTo(chave.nome) > 0) {
+	            while (j >= 0 && alunos[j].RGM.compareTo(chave.RGM) > 0) {
 	            	alunos[j + 1] = alunos[j];
 	                j--;
 	            }

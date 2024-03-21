@@ -5,6 +5,7 @@ public class Principal {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ListaSeq listaSeq = new ListaSeq();
+		ListaEncad listaEncad = new ListaEncad();
 		Scanner scanner = new Scanner(System.in);
 			
 		int pos = 0;
@@ -29,7 +30,7 @@ public class Principal {
 				case 2:{
 					
 					System.out.println("-------------------------------------------------------------------------");	
-					System.out.print("\nRGM: (ou 'fim' para sair): ");
+					System.out.print("\nRGM (ou 'fim' para sair): ");
 					String RGM = scanner.nextLine();
 					
 					if (RGM.equalsIgnoreCase("fim")) {
@@ -38,23 +39,52 @@ public class Principal {
 					
 					System.out.print("\nNome: ");
 					String nome = scanner.nextLine();
-					
-//					System.out.println("\nDigite o número do contato que deseja adicionar: ");
-//					String numero =  scanner.nextLine();
-					
+										
 					Alunos newctt = new Alunos(RGM, nome);
 					
 					// Verifica se a lista não está cheia antes de tentar adicionar um novo contato
 				    if (listaSeq.tamanhoLista() < listaSeq.MAX) {
 				        // Código para adicionar um novo contato
 				        if (listaSeq.insertContato(pos, newctt)) {
-				            System.out.println("\nContato adicionado com sucesso!");
+				        	System.out.println("\n-------------------------------------------------------------------------");
+				            System.out.println("\nAluno Cadastrado com sucesso!");
+				            System.out.println("\n-------------------------------------------------------------------------");
 				            pos++; // Incrementa a posição apenas se o contato for adicionado com sucesso
 				        } else {
-				            System.out.println("\nNão foi possível adicionar o contato. A lista está cheia");
+				        	System.out.println("\n-------------------------------------------------------------------------");
+				            System.out.println("\nNão foi possível realizar o cadastro. A lista está cheia");
+				            System.out.println("\n-------------------------------------------------------------------------");
 				        }
 				    } else {
+				    	System.out.println("\n-------------------------------------------------------------------------");
 				        System.out.println("\nNão foi possível adicionar o contato. A lista está cheia");
+				        System.out.println("\n-------------------------------------------------------------------------");
+				    }
+				    
+				    boolean loop = false;
+				    while (!loop) {
+				    	
+				    	System.out.println("\n-------------------------------------------------------------------------");
+				    	System.out.print("\nAdicionar disciplina");
+				    	System.out.println("\n-------------------------------------------------------------------------");
+				    	
+				    	System.out.print("Nome da disciplina: ");
+				    	nome = scanner.nextLine();
+				    	
+				    	Disciplina newdisc = new Disciplina(nome);
+				    	
+				    	if(listaEncad.add(nome)) {
+				    		System.out.println("Disciplina adicionada com sucesso!");
+				    	} else {
+				    		System.out.println("Erro ao adicionar disciplina");
+				    	}
+				    	
+				    	System.out.print("\n\nDeseja adicionar mais alguma disciplina?(s/n): ");
+				    	String esc = scanner.nextLine();
+				    	
+				    	if(esc.equals("n")) {
+				    		loop = false; 
+				    	} 
 				    }
 				    // Código para exibir a lista atualizada
 				    
@@ -69,6 +99,8 @@ public class Principal {
 				
 				case 3:{
 					
+				//----------------------------------------MOSTRAR A LISTA-----------------------------------------------------------------------//
+					
 					System.out.println("\nLista de contatos: ");
 					listaSeq.ordenar();
 					listaSeq.showList();
@@ -78,25 +110,31 @@ public class Principal {
 				}
 				
 				case 4:{
+				
+				//---------------------------------------BUSCAR UM REGISTRO-------------------------------------------------------------------//
 					
-					System.out.println("\n1 - Busca Binária\n2 - Busca Sequencial ");
+					System.out.print("\n1 - Busca Binária\n2 - Busca Sequencial ");
 					int esc = scanner.nextInt();
 					scanner.nextLine();
 					
 					switch (esc) {
 						case 1:{
 							
-							System.out.println("\nNome do contato que deseja buscar(ou 'fim' para sair): ");
+							System.out.println("\n-------------------------------------------------------------------------");
+							System.out.print("\nRGM do aluno: (ou 'fim' para sair): ");
 							String ctt = scanner.nextLine();
+							System.out.println("\n-------------------------------------------------------------------------");
 							
 							if (ctt.equalsIgnoreCase("fim")) {
 								break;
 							}
 							
-							Alunos contatoEncontrado = listaSeq.Buscar(ctt);
+							Alunos rgmEncontrado = listaSeq.Buscar(ctt);
 								
-							if(contatoEncontrado != null) {
-								System.out.println("\nContato encontrado: "  + "" + contatoEncontrado.nome + " | "  + "(" + contatoEncontrado.RGM + ") " /*+  contatoEncontrado.numero*/);
+							if(rgmEncontrado != null) {
+								System.out.println("\n-------------------------------------------------------------------------");
+								System.out.println("\nAluno encontrado: "  +  "" + rgmEncontrado.RGM + " | "  + rgmEncontrado.nome  /*+  contatoEncontrado.numero*/);
+								System.out.println("\n-------------------------------------------------------------------------");
 							} else {
 								System.out.println("\nContato não econtrado na lista.");
 							}
@@ -105,7 +143,8 @@ public class Principal {
 						}
 						
 						case 2:{
-							System.out.println("\nÍndice do contato que deseja buscar(ou '0' para sair): ");
+							System.out.println("\n-------------------------------------------------------------------------");
+							System.out.println("\nÍndice do aluno que deseja buscar(ou '0' para sair): ");
 							int ctt = scanner.nextInt();
 							
 							if (ctt == 0) {
@@ -118,9 +157,9 @@ public class Principal {
 								Alunos contatoEncontrado = listaSeq.BuscarSeq(index);
 									
 								if(contatoEncontrado != null) {
-									System.out.println("\nContato encontrado: "  + "" + contatoEncontrado.nome + " | "  + "(" + contatoEncontrado.RGM + ") " /*+  contatoEncontrado.numero*/);
+									System.out.println("\nAluno encontrado: "  + "" + contatoEncontrado.RGM + " | "  + "(" + contatoEncontrado.nome + ") " /*+  contatoEncontrado.numero*/);
 								} else {
-									System.out.println("\nContato não econtrado na lista.");
+									System.out.println("\nAluno não econtrado na lista.");
 								}
 
 						break;
@@ -178,8 +217,6 @@ public class Principal {
 				break;	
 				}
 			}
-			
-			scanner.close();
 		}
 	}
 }

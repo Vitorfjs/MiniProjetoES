@@ -2,13 +2,14 @@ public class Alunos {
 	
 	String RGM;
 	String nome;
+	private ListaEncad disciplinas;
 	//String numero;
 	
-	public Alunos(String ddd, String nome) {
+	public Alunos(String RGM, String nome) {
 	
 		this.nome = nome;
-		this.RGM = ddd;
-		//this.numero = numero;
+		this.RGM = RGM;
+		this.disciplinas = new ListaEncad();
 		
 	}
 	public Alunos() {
@@ -22,17 +23,18 @@ public class Alunos {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getDdd() {
+	public String getRGM() {
 		return RGM;
 	}
-	public void setDdd(String ddd) {
-		this.RGM = ddd;
+	public void setRGM(String RGM) {
+		this.RGM = RGM;
 	}
-//	public String getNumero() {
-//		return numero;
-//	}
-//	public void setNumero(String numero) {
-//		this.numero = numero;
-//	}
-	
+	public void adicionarDisciplina(String disciplina) {
+        disciplinas.add(disciplina);
+    }
+	public void mostrarDisciplinas() {
+        
+		System.out.println("	" );
+        disciplinas.view();
+    }
 }
