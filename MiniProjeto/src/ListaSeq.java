@@ -19,7 +19,7 @@ public class ListaSeq {
 			return n;
 		}
 		
-		public Alunos Buscar(String nome) {
+		public Alunos Buscar(String RGM) {
 			int left = 0;
 			int right = n - 1;
 			
@@ -27,7 +27,7 @@ public class ListaSeq {
 				int meio = left + (right - left)/2;
 				
 				// Verifica se o nome está no meio
-				int comparacao = alunos[meio].nome.compareTo(nome);
+				int comparacao = alunos[meio].RGM.compareTo(RGM);
 				if (comparacao == 0){
 					return alunos[meio];
 				}
@@ -108,8 +108,8 @@ public class ListaSeq {
 			for (int i = 0; i < n; i++) {
 				System.out.println(" " + (i+1) + " - " +"" + alunos[i].RGM + " | " 
 				+ "" + alunos[i].nome );
-				alunos[i].mostrarDisciplinas();
-				System.out.println();
+//				alunos[i].mostrarDisciplinas();
+//				System.out.println();
 				
 			}
 			System.out.println("\nTotal: " + n);
@@ -129,6 +129,15 @@ public class ListaSeq {
 	            alunos[j + 1] = chave;
 	        }
 		}
+		
+		public boolean verificarRGM(String rgm) {
+	        for (int i = 0; i < n; i++) {
+	            if (alunos[i].getRGM().equalsIgnoreCase(rgm)) {
+	                return true; // Retorna verdadeiro se o RGM já existir na lista
+	            }
+	        }
+	        return false; // Retorna falso se o RGM não for encontrado na lista
+	    }
 			
 }	
 		
