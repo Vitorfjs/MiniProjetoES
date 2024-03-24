@@ -1,15 +1,20 @@
-*mostrar a lista, opção para mostrar lista de disciplinas de determinado aluno - falta integrar o método add á o view e depois integrar o view em show list (listaSeq)
+*criar os nomes dos alunos no código ou manipular com arquivo txt
 
-*opção de adicionar disciplina (loop) durante inserção de novo aluno e quando mostrar lista de disciplinas do aluno - falta adicionar opção quando mostra a lista de disciplinas do aluno, talvez eu coloque esse recurso no metodo buscar.
-
-*
 
 
 
 
 ------------------------------
-
-
-
+Programação orientada a objetos
+Técnicas e desenvolvimento de algoritmos
+Sistemas operacionais
+Programação web
+Banco de dados
+Estruturas de dados
+Gestão de projetos
+Cliente/Servidor
 ---------------------------------
-
+Banco de dados
+Estruturas de dados
+Gestão de projetos
+Programação orientada a objetos
